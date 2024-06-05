@@ -1,5 +1,11 @@
+import { GameProvider } from './store'
+
 function App() {
-  return <div>Hello, world!</div>
+  return (
+    <GameProvider>
+      <div>Hello, world!</div>
+    </GameProvider>
+  )
 }
 
 export default App
