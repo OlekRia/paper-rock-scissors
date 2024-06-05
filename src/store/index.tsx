@@ -6,11 +6,11 @@ import React, {
   Dispatch,
 } from 'react'
 import { gameReducer, initialState } from './state'
-import { ActionType, StateType } from '../types'
+import { Action, State } from '../types'
 
 type GameContextProps = {
-  state: StateType
-  dispatch: Dispatch<ActionType>
+  state: State
+  dispatch: Dispatch<Action>
 }
 
 export const GameContext = createContext<GameContextProps | undefined>(
