@@ -1,9 +1,18 @@
+import { Button } from './atomic/atoms/Button'
+import { BaseLayout } from './atomic/templates/BaseLayout'
 import { GameProvider } from './store'
 
-function App() {
+const App = () => {
   return (
     <GameProvider>
-      <div>Hello, world!</div>
+      <BaseLayout
+        header={<div>Header</div>}
+        playZone={
+          <div>
+            <Button onClick={() => {}}>PLAY</Button>
+          </div>
+        }
+      />
     </GameProvider>
   )
 }

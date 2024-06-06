@@ -1,0 +1,17 @@
+.layout {
+  width: 100vw;
+  height: 100vh;
+  background: linear-gradient(to top, var(--c-dark-xxl), var(--c-dark-xss));
+}
+
+header {
+  background-color: yellow;
+}
+
+section {
+  margin-top: 10rem;
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  align-items: center;
+}
