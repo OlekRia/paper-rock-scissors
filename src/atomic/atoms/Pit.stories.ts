@@ -1,5 +1,4 @@
 import type { Meta, StoryObj } from '@storybook/react'
-import { fn } from '@storybook/test'
 import { Pit } from './Pit'
 
 const meta = {
@@ -9,13 +8,9 @@ const meta = {
     layout: 'centered',
   },
   tags: ['autodocs'],
-  argTypes: {
-    onClick: () => {},
-  },
+  argTypes: {},
   args: {
-    onClick: fn(),
     positionType: 'PAPER',
-    bet: 0,
     children: undefined,
   },
 } satisfies Meta<typeof Pit>
@@ -26,7 +21,7 @@ type Story = StoryObj<typeof meta>
 export const Paper: Story = {
   args: {
     positionType: 'PAPER',
-    children: "AAA"
+    children: 'Child !!',
   },
 }
 
