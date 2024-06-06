@@ -1,0 +1,40 @@
+.Pit {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 7rem;
+  height: 7rem;
+  border: 2px solid #fff;
+  border-radius: 0.5rem;
+  cursor: pointer;
+  pudding: 1rem;
+}
+
+.PAPER {
+  background-color: var(--c-blue-xl);
+  border-color: var(--c-blue-xs);
+  color: var(--c-blue-xs);
+}
+
+.ROCK {
+  background-color: var(--c-green-xl);
+  border-color: var(--c-green-xs);
+  color: var(--c-green-xs);
+}
+
+.SCISSORS {
+  background-color: var(--c-red-xl);
+  border-color: var(--c-red-xs);
+  color: var(--c-red-xs);
+}
+
+.Bet {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 60%;
+}
+
+.Label {
+}

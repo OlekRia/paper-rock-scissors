@@ -10,7 +10,6 @@ const meta = {
   },
   tags: ['autodocs'],
   argTypes: {
-
     onClick: () => {},
   },
   args: { onClick: fn(), children: 'Hello' },

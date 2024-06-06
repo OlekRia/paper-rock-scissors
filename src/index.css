@@ -1,9 +1,16 @@
 :root {
   /* VARIABLES */
+  --c-white: #ffffff;
   --c-black: #000000;
   --c-dark-xxl: #242424;
   --c-dark-xss: #4d4d4d;
   --c-brown: #d2b48c;
+  --c-blue-xs: #1e90ff;
+  --c-blue-xl: #000080;
+  --c-green-xs: #90ee90;
+  --c-green-xl: #006400;
+  --c-red-xs: #f08080;
+  --c-red-xl: #8b0000;
 
   /* FONT */
   font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
