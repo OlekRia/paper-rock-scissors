@@ -1,8 +1,10 @@
-export type Bets = 0 | 500 | 1000 | 1500
+export type Bets = number
 
 export type Position = 'ROCK' | 'PAPER' | 'SCISSORS'
 
 export type GameState = 'BETTING' | 'PLAY' | 'RESULT'
+
+export type Winner = 'PLAYER' | 'COMPUTER'
 
 export type Action = { type: 'INIT' }
 

@@ -1,0 +1,33 @@
+.Message {
+  text-align: center;
+}
+
+.Vs,
+.Betting,
+.Brown {
+  color: var(--c-brown);
+}
+
+.Play {
+  font-size: 2em;
+}
+
+.Result {
+}
+
+.Red {
+  color: var(--c-red-xs);
+  font-size: 2em;
+}
+
+.Msg {
+}
+
+.Green {
+  color: var(--c-green-xs);
+  font-size: 2em;
+}
+
+.White {
+  color: var(--c-white);
+}

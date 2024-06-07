@@ -1,2 +1,12 @@
 .PlayZone {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 3rem;
+}
+
+.Positions {
+  display: flex;
+  flex-direction: row;
+  gap: 1rem;
 }
