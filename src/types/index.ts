@@ -1,5 +1,3 @@
-export type Bets = number
-
 export type Position = 'ROCK' | 'PAPER' | 'SCISSORS'
 
 export type GameState = 'BETTING' | 'PLAY' | 'RESULT'
@@ -12,8 +10,8 @@ export type State = {
   balance: number
   bet: number
   win: number
-  rock: Bets
-  paper: Bets
-  scissors: Bets
+  rock: number
+  paper: number
+  scissors: number
   gameState: GameState
 }
