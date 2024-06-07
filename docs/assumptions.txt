@@ -3,3 +3,5 @@
 
 - When we click Left Button Mouse on the position we increase bet with 500 steps
   When we right click on the position we cleanup the bet (making it 0)
+
+- Since we play with relatively huge number, in the Header we put formatted numbers as well like in Chips

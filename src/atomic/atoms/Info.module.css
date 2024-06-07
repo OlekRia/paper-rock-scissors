@@ -1,7 +1,13 @@
+.Info {
+  display: flex;
+  flex-direction: row;
+}
+
 .Label {
   color: var(--c-brown);
 }
 
 .Text {
   color: var(--c-white);
+  min-width: 2em;
 }

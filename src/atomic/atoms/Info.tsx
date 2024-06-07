@@ -7,9 +7,9 @@ type InfoProps = {
 
 export const Info = (props: InfoProps) => {
   return (
-    <div>
-      <span className={styles.Label}>{props.label}: &nbsp;</span>
-      <span className={styles.Text}>{props.text}</span>
+    <div className={styles.Info}>
+      <div className={styles.Label}>{props.label}: &nbsp;</div>
+      <div className={styles.Text}>{props.text}</div>
     </div>
   )
 }
