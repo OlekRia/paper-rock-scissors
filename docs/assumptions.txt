@@ -1,2 +1,5 @@
 - We Assume that a player don't bid more than 100 million dollars. Otherwise it has influence to UI (Chip). 
   If it becomes required, some changes to UI should be discussed.
+
+- When we click Left Button Mouse on the position we increase bet with 500 steps
+  When we right click on the position we cleanup the bet (making it 0)
