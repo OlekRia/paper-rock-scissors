@@ -10,3 +10,10 @@
   flex-direction: row;
   gap: 1rem;
 }
+
+.Message {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  min-height: 3rem;
+}

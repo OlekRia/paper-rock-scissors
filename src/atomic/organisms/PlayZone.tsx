@@ -1,3 +1,4 @@
+import React from 'react'
 import { Position as PositionType } from '../../types'
 import { Button } from '../atoms/Button'
 import { Position } from '../molecules/Position'
@@ -13,6 +14,7 @@ export type ClickPayload = {
 type PlayZoneProps = {
   bets: [number, number, number]
   buttonLabel: string
+  children?: React.ReactNode
   onBetClick: (payload: ClickPayload) => void
   onButtonClick: () => void
 }
@@ -28,7 +30,9 @@ export const PlayZone = (props: PlayZoneProps) => {
 
   return (
     <div className={styles.PlayZone}>
-      <div></div>
+      <div className={styles.Message}>
+        {props.children}
+      </div>
 
       <div className={styles.Positions}>
         <Position
