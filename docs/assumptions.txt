@@ -1,0 +1,2 @@
+- We Assume that a player don't bid more than 100 million dollars. Otherwise it has influence to UI (Chip). 
+  If it becomes required, some changes to UI should be discussed.
