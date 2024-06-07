@@ -6,12 +6,12 @@ type BaseLayoutProps = {
 }
 
 export const BaseLayout = (props: BaseLayoutProps) => {
-  return <main className={styles.layout}>
-    <header>
+  return <main className={styles.Layout}>
+    <header className={styles.Header}>
       {props.header}
     </header>
 
-    <section>
+    <section className={styles.Section}>
       {props.playZone}
     </section>
   </main>
