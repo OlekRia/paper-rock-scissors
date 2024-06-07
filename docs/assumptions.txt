@@ -5,3 +5,7 @@
   When we right click on the position we cleanup the bet (making it 0)
 
 - Since we play with relatively huge number, in the Header we put formatted numbers as well like in Chips
+
+- if user's balance is 0, then he cannot bid anymore
+
+- We have no system how to show messages, for example warns. We use only console.warn

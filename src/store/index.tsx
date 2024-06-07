@@ -8,7 +8,7 @@ import React, {
 import { gameReducer, initialState } from './state'
 import { Action, State } from '../types'
 
-type GameContextProps = {
+export type GameContextProps = {
   state: State
   dispatch: Dispatch<Action>
 }

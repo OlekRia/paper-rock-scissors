@@ -4,7 +4,10 @@ export type GameState = 'BETTING' | 'PLAY' | 'RESULT'
 
 export type Winner = 'PLAYER' | 'COMPUTER'
 
-export type Action = { type: 'INIT' }
+export type Action =
+  | { type: 'INIT' }
+  | { type: 'BETTING_INCREASE'; payload: Position }
+  | { type: 'BETTING_CLEANUP'; payload: Position }
 
 export type State = {
   balance: number
