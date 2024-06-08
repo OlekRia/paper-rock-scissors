@@ -16,9 +16,13 @@ export const gameReducer = (state: State, action: Action): State => {
     case 'INIT':
       return { ...initialState }
     case 'BETTING_INCREASE':
-      return increaseBet(state, action.payload)
+      return state.gameState === 'BETTING'
+        ? increaseBet(state, action.payload)
+        : state
     case 'BETTING_CLEANUP':
-      return cleanupBet(state, action.payload)
+      return state.gameState === 'BETTING'
+        ? cleanupBet(state, action.payload)
+        : state
     default:
       return { ...state }
   }

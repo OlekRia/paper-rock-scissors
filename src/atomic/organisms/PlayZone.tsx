@@ -28,11 +28,11 @@ export const PlayZone = (props: PlayZoneProps) => {
     props.onBetClick({ type, button: 'RIGHT' })
   }
 
+  const betAmount = props.bets[0] + props.bets[1] + props.bets[2]
+
   return (
     <div className={styles.PlayZone}>
-      <div className={styles.Message}>
-        {props.children}
-      </div>
+      <div className={styles.Message}>{props.children}</div>
 
       <div className={styles.Positions}>
         <Position
@@ -58,7 +58,9 @@ export const PlayZone = (props: PlayZoneProps) => {
       </div>
 
       <div>
-        <Button onClick={props.onButtonClick}>{props.buttonLabel}</Button>
+        <Button disabled={betAmount <= 0} onClick={props.onButtonClick}>
+          {props.buttonLabel}
+        </Button>
       </div>
     </div>
   )

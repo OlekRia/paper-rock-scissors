@@ -2,7 +2,7 @@
   all: unset;
   color: var(--c-brown);
   background-color: var(--c-black);
-  border: 2px solid var(--c-brown); 
+  border: 2px solid var(--c-brown);
   border-radius: 1.5em;
   font-size: 2em;
   min-width: 8em;
@@ -17,4 +17,8 @@
 
 .Button:hover {
   opacity: 0.8;
+}
+
+.Button[disabled] {
+  opacity: 0.5;
 }

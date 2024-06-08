@@ -10,18 +10,17 @@ function toLowercasePosition(position: Position): PositionProps {
 }
 
 export function increaseBet(state: State, payload: Position): State {
-  // guard
+  // guards
   if (state.balance < BET_STEP) {
     console.warn('balance is not enough')
     return { ...state }
   }
 
+  const amount = state[toLowercasePosition(payload)]
   const filledPositions =
     oneIfExists(state.rock) +
     oneIfExists(state.paper) +
     oneIfExists(state.scissors)
-
-  const amount = state[toLowercasePosition(payload)]
   if (filledPositions > 1 && amount === 0) {
     console.warn('no more 2 positions should be allowed')
     return { ...state }
