@@ -1,9 +1,12 @@
 import { Position, State } from '../types'
+import { oneIfExists } from './numbers'
 
 export const BET_STEP = 500
 
-function oneIfExists(x: number): number {
-  return x > 0 ? 1 : 0
+type PositionProps = 'rock' | 'paper' | 'scissors'
+
+function toLowercasePosition(position: Position): PositionProps {
+  return position.toLowerCase() as PositionProps
 }
 
 export function increaseBet(state: State, payload: Position): State {
@@ -18,13 +21,8 @@ export function increaseBet(state: State, payload: Position): State {
     oneIfExists(state.paper) +
     oneIfExists(state.scissors)
 
-  const positionMap: Record<Position, number> = {
-    ROCK: state.rock,
-    PAPER: state.paper,
-    SCISSORS: state.scissors,
-  }
-
-  if (filledPositions > 1 && positionMap[payload] === 0) {
+  const amount = state[toLowercasePosition(payload)]
+  if (filledPositions > 1 && amount === 0) {
     console.warn('no more 2 positions should be allowed')
     return { ...state }
   }
@@ -33,16 +31,20 @@ export function increaseBet(state: State, payload: Position): State {
 
   const newState = { ...state }
 
-  if (payload === 'ROCK') {
-    newState.rock += BET_STEP
-  } else if (payload === 'PAPER') {
-    newState.paper += BET_STEP
-  } else if (payload === 'SCISSORS') {
-    newState.scissors += BET_STEP
-  }
-
+  newState[toLowercasePosition(payload)] += BET_STEP
   newState.balance -= BET_STEP
   newState.bet += BET_STEP
+
+  return newState
+}
+
+export function cleanupBet(state: State, payload: Position): State {
+  const newState = { ...state }
+
+  const amount = newState[toLowercasePosition(payload)]
+  newState[toLowercasePosition(payload)] = 0
+  newState.balance += amount
+  newState.bet -= amount
 
   return newState
 }
