@@ -8,8 +8,8 @@ import { randomPosition } from '../../functional/numbers'
 
 const buttonText: Record<string, string> = {
   BETTING: 'PLAY',
-  PLAY: 'PLAY',
-  RESULT: 'CLEAR',
+  PLAY: 'SHOW RESULTS',
+  RESULT: 'NEW GAME',
 }
 
 export const GamePage = () => {
@@ -24,7 +24,6 @@ export const GamePage = () => {
   }
 
   const buttonClickHandler = () => {
-    console.log('buttonClickHandler')
     dispatch({ type: 'PLAY', computerChoice: randomPosition() })
   }
 
@@ -40,7 +39,7 @@ export const GamePage = () => {
           onBetClick={betClickHandler}
           onButtonClick={buttonClickHandler}
         >
-          <Message message={{ gameState: 'BETTING' }} />
+          <Message message={state.message.message} />
         </PlayZone>
       }
     />

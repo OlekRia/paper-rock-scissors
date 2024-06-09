@@ -1,5 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react'
-import { Message, MessageProps } from './Message'
+import { Message } from './Message'
+import { MessageType } from '../../types'
 
 const meta: Meta<typeof Message> = {
   title: 'Atomic/Atoms/Message',
@@ -10,11 +11,11 @@ const meta: Meta<typeof Message> = {
   tags: ['autodocs'],
   argTypes: {},
   args: {},
-};
+}
 
-export default meta;
+export default meta
 
-type Story = StoryObj<MessageProps>;
+type Story = StoryObj<MessageType>
 
 export const Betting: Story = {
   args: {

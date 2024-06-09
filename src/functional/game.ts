@@ -1,5 +1,6 @@
-import { Position, State, Winner } from '../types'
+import { Position, ResultType, State, Winner } from '../types'
 import { zip } from './lists'
+// import { zip } from './lists'
 import { oneIfExists } from './numbers'
 
 /**
@@ -91,8 +92,51 @@ export function cleanupBet(state: State, position: Position): State {
   return newState
 }
 
+/**
+ * Plays a round of the game with the given state and computer choice.
+ *
+ * @param {State} state - The current state of the game.
+ * @param {Position} computerChoice - The choice made by the computer.
+ * @return {State} The updated state after the round is played.
+ */
 export function play(state: State, computerChoice: Position): State {
+  const newState = { ...state, computerChoice } as State
+
+  const userBets = new Array<Position>()
+  if (state.paper > 0) userBets.push('PAPER')
+  if (state.rock > 0) userBets.push('ROCK')
+  if (state.scissors > 0) userBets.push('SCISSORS')
+
+  newState.gameState = 'PLAY'
+  newState.message = {
+    message: {
+      gameState: newState.gameState,
+      computerBet: computerChoice,
+      userBets,
+    },
+  }
+
+  // todo: write tests
+
+  return newState
+}
+
+/**
+ * Calculates the result of a game and updates the game state accordingly.
+ *
+ * @param {State} state - The current game state.
+ * @return {State} The updated game state with the result.
+ */
+export function showResult(state: State): State {
   const newState = { ...state }
+  newState.gameState = 'RESULT'
+
+  const message = {
+    gameState: newState.gameState,
+    amount: '0.00',
+    winner: 'DRAW',
+    userBetPosition: newState.computerChoice,
+  } as ResultType
 
   const positionBet = zip(
     ['PAPER', 'ROCK', 'SCISSORS'],
@@ -100,43 +144,92 @@ export function play(state: State, computerChoice: Position): State {
   )
 
   const result = positionBet.map(([position, bet]) => {
-    const result = bet <= 0 ? 'DRAW' : winner(computerChoice, position)
-    return [bet, result]
+    const p = position as Position
+    const b = bet as number
+
+    const result = b <= 0 ? 'DRAW' : winner(newState.computerChoice, p)
+    return [position, bet, result]
   })
+
+  console.log(newState.computerChoice, result)
 
   const betsCount = filledPositions(state)
 
   if (betsCount === 1) {
-    result.forEach(([bet, result]) => {
-      if (bet > 0) {
-        if (result === 'DRAW') {
-          newState.balance += bet
-          newState.win = bet
-        } else if (result === 'PLAYER') {
-          const win = bet * 14
-          newState.balance += win
+    // Player bets only 1 bet. Draw is possible
+    result.forEach(([position, bet, result]) => {
+      const b = bet as number
+      const r = result as Winner
+
+      if (b > 0) {
+        message.winner = 'COMPUTER'
+        message.userBetPosition = position as Position
+
+        if (r === 'DRAW') {
+          newState.win = b
+          message.winner = 'DRAW'
+        } else if (r === 'PLAYER') {
+          const win = b * 14
           newState.win = win
-        } else if (result === 'COMPUTER') {
-          newState.win = 0
+          message.winner = 'PLAYER'
         }
+        message.amount = newState.win.toFixed(2)
       }
     })
-  }
-  else if (betsCount === 2) {
-    if(bet > 0) {
-      if(result === 'PLAYER') {
-        const win = bet*3
-        newState.balance += win
-        newState.win = win
-      } else {
-        newState.win = 0
+  } else if (betsCount === 2) {
+    // Player bets 2 bet. Draw is impossible. Player wins or loses
+    message.winner = 'COMPUTER'
+    message.amount = '0.00'
+
+    for (const [position, bet, res] of result) {
+      const b = bet as number
+      const r = res as Winner
+
+      if (b > 0) {
+        if (r === 'PLAYER') {
+          const win = b * 3
+          newState.win += win
+          message.winner = 'PLAYER'
+          message.userBetPosition = position as Position
+          message.amount = newState.win.toFixed(2)
+          break
+        } else if (r === 'COMPUTER') {
+          message.winner = 'COMPUTER'
+          message.amount = '0.00'
+          message.userBetPosition = position as Position
+        }
       }
     }
-   }
-  else {
+  } else {
     console.error('no more 2 positions should be allowed')
   }
 
-  console.log(result)
-  return { ...newState, gameState: 'RESULT' }
+  newState.message = { message }
+
+  return newState
+
+  // todo: write tests
+}
+
+/**
+ * Cleans up the game state by resetting the balance, win amount, bet, and game state.
+ *
+ * @param {State} state - The current game state.
+ * @return {State} The updated game state after cleanup.
+ */
+export function cleanupGame(state: State): State {
+  const newState = { ...state }
+
+  newState.balance += newState.win
+  newState.win = 0
+  newState.rock = 0
+  newState.paper = 0
+  newState.scissors = 0
+  newState.bet = 0
+  newState.gameState = 'BETTING'
+  newState.message = { message: { gameState: 'BETTING' } }
+
+  // todo: write tests
+
+  return newState
 }

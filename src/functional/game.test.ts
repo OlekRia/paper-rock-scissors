@@ -9,6 +9,8 @@ const state: State = {
   paper: 0,
   scissors: 0,
   gameState: 'BETTING',
+  computerChoice: 'ROCK',
+  message: { message: { gameState: 'BETTING' } },
 }
 
 describe('Game', () => {
@@ -69,11 +71,15 @@ describe('Game', () => {
     expect(winner('ROCK', 'ROCK')).toEqual('DRAW')
     expect(winner('SCISSORS', 'SCISSORS')).toEqual('DRAW')
     expect(winner('PAPER', 'PAPER')).toEqual('DRAW')
+
     expect(winner('SCISSORS', 'ROCK')).toEqual('PLAYER')
-    expect(winner('ROCK', 'SCISSORS')).toEqual('COMPUTER')
-    expect(winner('PAPER', 'ROCK')).toEqual('COMPUTER')
     expect(winner('ROCK', 'PAPER')).toEqual('PLAYER')
     expect(winner('PAPER', 'SCISSORS')).toEqual('PLAYER')
+
+    expect(winner('ROCK', 'SCISSORS')).toEqual('COMPUTER')
     expect(winner('SCISSORS', 'PAPER')).toEqual('COMPUTER')
+    expect(winner('PAPER', 'ROCK')).toEqual('COMPUTER')
   })
+
+  // TODO: Test full game play
 })

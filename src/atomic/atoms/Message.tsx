@@ -1,22 +1,6 @@
 import React from 'react'
-import { Position, Winner } from '../../types'
+import { MessageType, Position, Winner } from '../../types'
 import styles from './Message.module.css'
-
-export type MessageProps = {
-  message:
-    | { gameState: 'BETTING' }
-    | {
-        gameState: 'PLAY'
-        computerBet: Position
-        userBets: Array<Position>
-      }
-    | {
-        gameState: 'RESULT'
-        amount: string
-        winner: Winner
-        userBetPosition: Position
-      }
-}
 
 const Betting = () => (
   <div className={styles.Betting}>PICK YOUR 1 OR 2 POSITIONS</div>
@@ -35,9 +19,15 @@ const Result = (props: {
   position: Position
   amount: string
 }) => {
-  const isPlayerWins = props.winner === 'PLAYER'
-  const color = isPlayerWins ? styles.Green : styles.Red
-  const message = `${props.position} ${isPlayerWins ? 'WON' : 'LOST'}`
+  let isPlayerWins = false
+  let color = styles.Draw
+  let message = 'IT IS A DRAW'
+
+  if (props.winner !== 'DRAW') {
+    isPlayerWins = props.winner === 'PLAYER'
+    color = isPlayerWins ? styles.Green : styles.Red
+    message = `${props.position} ${isPlayerWins ? 'WON' : 'LOST'}`
+  }
 
   return (
     <div className={styles.Result}>
@@ -53,7 +43,7 @@ const Result = (props: {
   )
 }
 
-export const Message: React.FC<MessageProps> = props => {
+export const Message: React.FC<MessageType> = props => {
   return (
     <div className={styles.Message}>
       {props.message.gameState === 'BETTING' && <Betting />}
