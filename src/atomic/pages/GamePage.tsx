@@ -4,6 +4,7 @@ import { Header } from '../molecules/Header'
 import { ClickPayload, PlayZone } from '../organisms/PlayZone'
 import { BaseLayout } from '../templates/BaseLayout'
 import { GameContext, GameContextProps } from '../../store'
+import { randomPosition } from '../../functional/numbers'
 
 const buttonText: Record<string, string> = {
   BETTING: 'PLAY',
@@ -23,7 +24,8 @@ export const GamePage = () => {
   }
 
   const buttonClickHandler = () => {
-    console.log('main button clicked')
+    console.log('buttonClickHandler')
+    dispatch({ type: 'PLAY', computerChoice: randomPosition() })
   }
 
   return (

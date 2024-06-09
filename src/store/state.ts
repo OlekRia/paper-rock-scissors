@@ -1,4 +1,4 @@
-import { cleanupBet, increaseBet } from '../functional/game'
+import { cleanupBet, increaseBet, play } from '../functional/game'
 import { Action, State } from '../types'
 
 export const initialState: State = {
@@ -23,6 +23,8 @@ export const gameReducer = (state: State, action: Action): State => {
       return state.gameState === 'BETTING'
         ? cleanupBet(state, action.payload)
         : state
+    case 'PLAY':
+      return state.bet > 0 ? play(state, action.computerChoice) : state
     default:
       return { ...state }
   }

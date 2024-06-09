@@ -1,5 +1,5 @@
 import { State } from '../types'
-import { cleanupBet, increaseBet } from './game'
+import { cleanupBet, increaseBet, winner } from './game'
 
 const state: State = {
   balance: 5000,
@@ -63,5 +63,17 @@ describe('Game', () => {
     expect(s.rock).toBe(0)
     expect(s.bet).toBe(0)
     expect(s.balance).toBe(5201)
+  })
+
+  test('Winner', () => {
+    expect(winner('ROCK', 'ROCK')).toEqual('DRAW')
+    expect(winner('SCISSORS', 'SCISSORS')).toEqual('DRAW')
+    expect(winner('PAPER', 'PAPER')).toEqual('DRAW')
+    expect(winner('SCISSORS', 'ROCK')).toEqual('PLAYER')
+    expect(winner('ROCK', 'SCISSORS')).toEqual('COMPUTER')
+    expect(winner('PAPER', 'ROCK')).toEqual('COMPUTER')
+    expect(winner('ROCK', 'PAPER')).toEqual('PLAYER')
+    expect(winner('PAPER', 'SCISSORS')).toEqual('PLAYER')
+    expect(winner('SCISSORS', 'PAPER')).toEqual('COMPUTER')
   })
 })

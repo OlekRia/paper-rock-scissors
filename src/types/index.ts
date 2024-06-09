@@ -2,12 +2,13 @@ export type Position = 'ROCK' | 'PAPER' | 'SCISSORS'
 
 export type GameState = 'BETTING' | 'PLAY' | 'RESULT'
 
-export type Winner = 'PLAYER' | 'COMPUTER'
+export type Winner = 'PLAYER' | 'COMPUTER' | 'DRAW'
 
 export type Action =
   | { type: 'INIT' }
   | { type: 'BETTING_INCREASE'; payload: Position }
   | { type: 'BETTING_CLEANUP'; payload: Position }
+  | { type: 'PLAY', computerChoice: Position }
 
 export type State = {
   balance: number
