@@ -116,8 +116,6 @@ export function play(state: State, computerChoice: Position): State {
     },
   }
 
-  // todo: write tests
-
   return newState
 }
 
@@ -207,8 +205,6 @@ export function showResult(state: State): State {
   newState.message = { message }
 
   return newState
-
-  // todo: write tests
 }
 
 /**
@@ -228,8 +224,6 @@ export function cleanupGame(state: State): State {
   newState.bet = 0
   newState.gameState = 'BETTING'
   newState.message = { message: { gameState: 'BETTING' } }
-
-  // todo: write tests
 
   return newState
 }

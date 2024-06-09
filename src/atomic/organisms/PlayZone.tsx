@@ -36,17 +36,17 @@ export const PlayZone = (props: PlayZoneProps) => {
 
       <div className={styles.Positions}>
         <Position
-          bet={props.bets[0]}
-          positionTypes="PAPER"
-          onClick={() => clickHandler('PAPER')}
-          onContextMenu={() => contextMenuClickHandler('PAPER')}
-        />
-
-        <Position
           bet={props.bets[1]}
           positionTypes="ROCK"
           onClick={() => clickHandler('ROCK')}
           onContextMenu={() => contextMenuClickHandler('ROCK')}
+        />
+
+        <Position
+          bet={props.bets[0]}
+          positionTypes="PAPER"
+          onClick={() => clickHandler('PAPER')}
+          onContextMenu={() => contextMenuClickHandler('PAPER')}
         />
 
         <Position

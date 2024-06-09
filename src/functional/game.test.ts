@@ -80,6 +80,4 @@ describe('Game', () => {
     expect(winner('SCISSORS', 'PAPER')).toEqual('COMPUTER')
     expect(winner('PAPER', 'ROCK')).toEqual('COMPUTER')
   })
-
-  // TODO: Test full game play
 })

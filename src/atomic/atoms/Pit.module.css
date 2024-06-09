@@ -8,16 +8,15 @@
   border: 2px solid #fff;
   border-radius: 0.5rem;
   cursor: pointer;
-
 }
 
-.PAPER {
+.ROCK {
   background-color: var(--c-blue-xl);
   border-color: var(--c-blue-xs);
   color: var(--c-blue-xs);
 }
 
-.ROCK {
+.PAPER {
   background-color: var(--c-green-xl);
   border-color: var(--c-green-xs);
   color: var(--c-green-xs);
@@ -34,7 +33,4 @@
   justify-content: center;
   align-items: center;
   height: 60%;
-}
-
-.Label {
 }

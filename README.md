@@ -1,30 +1,15 @@
-# React + TypeScript + Vite
+# ROCK PAPER SCISSOR game
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+## Run the game
 
-Currently, two official plugins are available:
+Run: `pnpm dev`
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+Tests: `pnpm test`
 
-## Expanding the ESLint configuration
+Storybook: `pnpm storybook`
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+## General architecture
 
-- Configure the top-level `parserOptions` property like this:
-
-```js
-export default {
-  // other rules...
-  parserOptions: {
-    ecmaVersion: 'latest',
-    sourceType: 'module',
-    project: ['./tsconfig.json', './tsconfig.node.json'],
-    tsconfigRootDir: __dirname,
-  },
-}
-```
-
-- Replace `plugin:@typescript-eslint/recommended` to `plugin:@typescript-eslint/recommended-type-checked` or `plugin:@typescript-eslint/strict-type-checked`
-- Optionally add `plugin:@typescript-eslint/stylistic-type-checked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and add `plugin:react/recommended` & `plugin:react/jsx-runtime` to the `extends` list
+- The UI part of the project made in storybook using Atomic architecture
+- We use Jest tests for functional part of Javascript
+- We use Context for a global state machine
