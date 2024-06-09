@@ -3,12 +3,12 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  width: 7rem;
+  width: 8.5rem;
   height: 7rem;
   border: 2px solid #fff;
   border-radius: 0.5rem;
   cursor: pointer;
-  pudding: 1rem;
+
 }
 
 .PAPER {
